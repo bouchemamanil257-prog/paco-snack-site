@@ -4,103 +4,70 @@
 <meta charset="UTF-8">
 <title>Paco Snack</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- Onest font from Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500&display=swap" rel="stylesheet">
-
 <style>
 /* GLOBAL */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Onest',sans-serif;}
-body{
-  background:#0b0b0b;
-  color:#fff;
-  font-weight:300; /* lighter text */
-}
+body{background:#0b0b0b;color:#fff;font-weight:300;overflow-x:hidden;}
+img{max-width:100%;height:auto;display:block;}
 
 /* HEADER */
 header{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  padding:15px 30px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:transparent; /* 👈 removed black bar */
+  position:fixed;top:0;left:0;width:100%;
+  padding:15px 20px;
+  display:flex;justify-content:space-between;align-items:center;
+  background:transparent; /* Removed black box behind logo */
   z-index:1000;
 }
-.header img{width:110px;}
+header img{width:110px;}
 .nav ul{list-style:none;display:flex;gap:25px;}
-.nav a{
-  color:#fff;
-  text-decoration:none;
-  font-size:15px;
-  font-weight:300; /* lighter */
-  transition: color 0.3s;
-}
+.nav a{color:#fff;text-decoration:none;font-size:15px;transition:color 0.3s;}
 .nav a:hover{color:#1f5f24;}
 .hamburger{display:none;flex-direction:column;cursor:pointer;gap:5px;}
 .hamburger span{width:26px;height:3px;background:#fff;}
 @media(max-width:768px){
-  .nav{position:fixed;top:0;right:-100%;width:220px;height:100vh;background:#1f5f24;display:flex;justify-content:center;transition:.3s;}
+  .nav{
+    position:fixed;top:0;right:-100%;width:80%;max-width:250px;height:100vh;background:#1f5f24;display:flex;justify-content:center;transition:.3s;padding-top:60px;
+  }
   .nav ul{flex-direction:column;}
   .nav.active{right:0;}
+  .nav ul li a{padding:15px 10px;font-size:18px;display:block;}
   .hamburger{display:flex;}
 }
 
 /* HERO */
-.hero{height:70vh;position:relative;}
+.hero{min-height:70vh;position:relative;}
 .hero img{width:100%;height:100%;object-fit:cover;}
-.hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,.25);}
 .hero-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);}
 .hero-center img{width:180px;}
 
-/* STAR */
+/* STAR BAR */
 .star-bar{background:#1f5f24;padding:20px;text-align:center;letter-spacing:6px;font-weight:300;}
 
 /* MENU PREVIEW */
-.menu{background:#1f5f24;padding:40px 30px 60px;}
-.menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;max-width:900px;margin:auto;}
+.menu{background:#1f5f24;padding:40px 20px 60px;}
+.menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:900px;margin:auto;}
 .menu-item{background:#fff;border-radius:18px;overflow:hidden;}
-.menu-item img{width:100%;height:320px;object-fit:cover;}
+.menu-item img{width:100%;height:auto;object-fit:cover;}
 
 /* RESERVATION */
-.reserve{height:55vh;position:relative;}
-.reserve img{width:110%;height:95%;object-fit:cover;}
-.reserve-overlay{position:absolute;inset:0;background:rgba(0,0,0,.55);}
+.reserve{min-height:60vh;position:relative;padding:40px 20px;}
+.reserve img{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;}
 .reserve-box{
-  position:absolute;
-  top:50%; left:50%;
-  transform:translate(-50%,-50%);
-  width:320px; text-align:center;
-  font-family:'Onest',sans-serif;
-  font-weight:300; /* lighter text */
-  color:#fff;
+  position:relative;max-width:90%;margin:auto;background:rgba(0,0,0,0.0);padding:20px;border-radius:12px;text-align:center;
 }
 .reserve-box h2{font-weight:300;font-size:1.8rem;margin-bottom:15px;}
+.reserve-box label{display:block;text-align:left;margin:5px 0;font-size:14px;}
 .reserve-box input{
- width:100%;
-  padding:14px;
-  font-size:16px;   /* 👈 MUST be 16px for mobile */
-  margin-bottom:15px;
-  border-radius:8px;
-  font-weight:300;
-  border:none;
-  -webkit-appearance: none;
-  appearance: none;
+  width:100%;padding:12px;font-size:16px;margin-bottom:15px;border-radius:8px;font-weight:300;border:none;
+  -webkit-appearance:none;appearance:none;color:#000;background:#fff;
 }
 .reserve-box button{
   width:100%;padding:14px;font-size:16px;border-radius:8px;cursor:pointer;background:#1f5f24;color:#fff;border:none;font-weight:300;
 }
-  .reserve-box input[type="date"],
-.reserve-box input[type="time"]{
-  background:#fff;
-  color:#000;
-}
 
 /* CONTACT */
-.contact{padding:60px 30px;text-align:center;font-weight:300;}
+.contact{padding:60px 20px;text-align:center;font-weight:300;}
 .contact-box{max-width:600px;margin:auto;display:grid;gap:20px;}
 .contact-item{background:#1f5f24;padding:18px;border-radius:12px;font-weight:300;}
 
@@ -118,17 +85,16 @@ header{
 .fullscreen span{position:absolute;top:20px;right:30px;font-size:30px;cursor:pointer;}
 </style>
 </head>
-
 <body>
 
 <header class="header">
   <img src="images/paco-sn.jpg.jpg" alt="Paco Coffee Logo">
   <nav class="nav">
     <ul>
-     <li><a href="#" onclick="goToHome(); closeHamburger()">Home</a></li>
-<li><a href="#" onclick="openMenu(); closeHamburger()">Menu</a></li>
-<li><a href="#" onclick="goToReserve(); closeHamburger()">Reservation</a></li>
-<li><a href="#" onclick="goToContact(); closeHamburger()">Contact</a></li>
+      <li><a href="#" onclick="goToHome(); closeHamburger()">Home</a></li>
+      <li><a href="#" onclick="openMenu(); closeHamburger()">Menu</a></li>
+      <li><a href="#" onclick="goToReserve(); closeHamburger()">Reservation</a></li>
+      <li><a href="#" onclick="goToContact(); closeHamburger()">Contact</a></li>
     </ul>
   </nav>
   <div class="hamburger"><span></span><span></span><span></span></div>
@@ -136,7 +102,6 @@ header{
 
 <section class="hero" id="home">
   <img src="images/menu-bh.jpg.png" alt="Hero">
-  <div class="hero-overlay"></div>
   <div class="hero-center"><img src="images/paco-white.jpg.png" alt="Logo"></div>
 </section>
 
@@ -151,13 +116,21 @@ header{
 
 <section class="reserve" id="reserve">
   <img src="images/cafe.jpg.png" alt="Reservation Background">
-  <div class="reserve-overlay"></div>
   <div class="reserve-box">
     <h2>Reservation</h2>
-    <input type="text" id="resName" placeholder="Your Name">
-    <input type="number" id="resPeople" placeholder="Number of people" min="1">
+
+    <label for="resName">Your Name</label>
+    <input type="text" id="resName" placeholder="Enter your name">
+
+    <label for="resPeople">Number of People</label>
+    <input type="number" id="resPeople" placeholder="How many people?" min="1">
+
+    <label for="resDate">Select Date 📅</label>
     <input type="date" id="resDate">
+
+    <label for="resTime">Select Time ⏰</label>
     <input type="time" id="resTime">
+
     <button onclick="sendWhatsApp()">Reserve via WhatsApp</button>
   </div>
 </section>
@@ -175,10 +148,7 @@ header{
 <section id="mapSection" style="padding:40px 0; text-align:center;">
   <h2>Find Us Here</h2>
   <div style="width:90%; max-width:800px; height:400px; margin:auto;">
-    <iframe 
-      src="https://www.google.com/maps?q=QW48+WP2,Chéraga,Algeria&output=embed" 
-      width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
-    </iframe>
+    <iframe src="https://www.google.com/maps?q=QW48+WP2,Chéraga,Algeria&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
   </div>
 </section>
 
@@ -200,24 +170,25 @@ header{
 </div>
 
 <script>
-  function closeHamburger(){
-  nav.classList.remove('active');
-}
-const hamburger=document.querySelector('.hamburger');
-const nav=document.querySelector('.nav');
-hamburger.onclick=()=>nav.classList.toggle('active');
+// Hamburger toggle
+const hamburger = document.querySelector('.hamburger');
+const nav = document.querySelector('.nav');
+hamburger.onclick = () => nav.classList.toggle('active');
+function closeHamburger(){ nav.classList.remove('active'); }
 
+// Smooth scrolling
 function goToSection(id){
-  closeMenu();
-  const section=document.getElementById(id);
-  const headerOffset=90;
+  closeMenu(); 
+  const section = document.getElementById(id);
+  const headerOffset = 90;
   const offsetPos = section.getBoundingClientRect().top + window.pageYOffset - headerOffset;
   window.scrollTo({top:offsetPos, behavior:"smooth"});
 }
-function goToHome(){goToSection("home");}
-function goToReserve(){goToSection("reserve");}
-function goToContact(){goToSection("contact");}
+function goToHome(){ goToSection("home"); }
+function goToReserve(){ goToSection("reserve"); }
+function goToContact(){ goToSection("contact"); }
 
+// Menu page
 function openMenu(){
   document.querySelectorAll('.hero,.star-bar,.menu,.reserve,.contact').forEach(e=>e.style.display="none");
   document.getElementById('menuPage').style.display="block";
@@ -228,55 +199,44 @@ function closeMenu(){
   document.getElementById('menuPage').style.display="none";
 }
 
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting) e.target.classList.add('visible');
-  });
+// Animate menu images
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
 },{threshold:0.2});
 document.querySelectorAll('#menuPage img').forEach(img=>observer.observe(img));
 
-function openFull(img){document.getElementById('fullImg').src=img.src; document.getElementById('fullscreen').style.display='flex';}
-function closeFull(){document.getElementById('fullscreen').style.display='none';}
+// Fullscreen images
+function openFull(img){ document.getElementById('fullImg').src=img.src; document.getElementById('fullscreen').style.display='flex'; }
+function closeFull(){ document.getElementById('fullscreen').style.display='none'; }
 
-  function sendWhatsApp(){
+// WhatsApp Reservation with formatted date/time
+function sendWhatsApp(){
   const name = document.getElementById('resName').value;
   const people = document.getElementById('resPeople').value;
   const date = document.getElementById('resDate').value;
   const time = document.getElementById('resTime').value;
+  if(!name || !people || !date || !time){ alert("Please fill all fields"); return; }
 
-  if(!name || !people || !date || !time){
-    alert("Please fill all fields");
-    return;
-  }
-
-  // Manual date formatting: YYYY-MM-DD -> 16 Jan 2026
+  // Format date: YYYY-MM-DD -> 16 Jan 2026
   const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
   const [year, month, day] = date.split('-');
   const formattedDate = `${parseInt(day)} ${months[parseInt(month)-1]} ${year}`;
 
-  // Format time to 12h: HH:MM -> 07:30 PM
+  // Format time: 24h -> 12h
   const [hour, minute] = time.split(':');
   const hourNum = parseInt(hour);
   const ampm = hourNum >= 12 ? 'PM' : 'AM';
   const hour12 = hourNum % 12 || 12;
   const formattedTime = `${hour12}:${minute} ${ampm}`;
 
-  // Build WhatsApp message
   const message = `Hello Paco Coffee ☕%0AReservation:%0AName: ${name}%0APeople: ${people}%0ADate: ${formattedDate}%0ATime: ${formattedTime}`;
-
-  // Open WhatsApp
   window.open(`https://wa.me/213781675002?text=${message}`, "_blank");
 }
-
-  // Build WhatsApp message
-  const message = `Hello Paco Coffee ☕%0AReservation:%0AName: ${name}%0APeople: ${people}%0ADate: ${formattedDate}%0ATime: ${formattedTime}`;
-
-  // Open WhatsApp
-  window.open(`https://wa.me/213781675002?text=${message}`, "_blank");
 </script>
-
 </body>
 </html>
+
+
 
 
 
