@@ -112,10 +112,10 @@ header{
   <img src="images/paco-sn.jpg.jpg" alt="Paco Coffee Logo">
   <nav class="nav">
     <ul>
-      <li><a href="#" onclick="goToHome()">Home</a></li>
-      <li><a href="#" onclick="openMenu()">Menu</a></li>
-      <li><a href="#" onclick="goToReserve()">Reservation</a></li>
-      <li><a href="#" onclick="goToContact()">Contact</a></li>
+      <li><a href="#" onclick="goToHome(); closeNav()">Home</a></li>
+<li><a href="#" onclick="openMenu(); closeNav()">Menu</a></li>
+<li><a href="#" onclick="goToReserve(); closeNav()">Reservation</a></li>
+<li><a href="#" onclick="goToContact(); closeNav()">Contact</a></li>
     </ul>
   </nav>
   <div class="hamburger"><span></span><span></span><span></span></div>
@@ -235,6 +235,7 @@ function sendWhatsApp(){
 
 </body>
 </html>
+
 
 
 
