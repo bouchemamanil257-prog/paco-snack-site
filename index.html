@@ -18,7 +18,18 @@ body{
 }
 
 /* HEADER */
-.header{position:fixed;top:0;left:0;width:100%;padding:15px 30px;display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,0.45);z-index:1000;}
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  padding:15px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:transparent; /* 👈 removed black bar */
+  z-index:1000;
+}
 .header img{width:110px;}
 .nav ul{list-style:none;display:flex;gap:25px;}
 .nav a{
@@ -224,6 +235,7 @@ function sendWhatsApp(){
 
 </body>
 </html>
+
 
 
 
