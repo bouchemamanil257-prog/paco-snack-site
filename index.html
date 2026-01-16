@@ -80,7 +80,15 @@ header{
 }
 .reserve-box h2{font-weight:300;font-size:1.8rem;margin-bottom:15px;}
 .reserve-box input{
-  width:100%;padding:14px;font-size:16px;margin-bottom:15px;border-radius:8px;font-weight:300;
+ width:100%;
+  padding:14px;
+  font-size:16px;   /* 👈 MUST be 16px for mobile */
+  margin-bottom:15px;
+  border-radius:8px;
+  font-weight:300;
+  border:none;
+  -webkit-appearance: none;
+  appearance: none;
 }
 .reserve-box button{
   width:100%;padding:14px;font-size:16px;border-radius:8px;cursor:pointer;background:#1f5f24;color:#fff;border:none;font-weight:300;
@@ -112,10 +120,10 @@ header{
   <img src="images/paco-sn.jpg.jpg" alt="Paco Coffee Logo">
   <nav class="nav">
     <ul>
-      <li><a href="#" onclick="goToHome(); closeNav()">Home</a></li>
-<li><a href="#" onclick="openMenu(); closeNav()">Menu</a></li>
-<li><a href="#" onclick="goToReserve(); closeNav()">Reservation</a></li>
-<li><a href="#" onclick="goToContact(); closeNav()">Contact</a></li>
+     <li><a href="#" onclick="goToHome(); closeHamburger()">Home</a></li>
+<li><a href="#" onclick="openMenu(); closeHamburger()">Menu</a></li>
+<li><a href="#" onclick="goToReserve(); closeHamburger()">Reservation</a></li>
+<li><a href="#" onclick="goToContact(); closeHamburger()">Contact</a></li>
     </ul>
   </nav>
   <div class="hamburger"><span></span><span></span><span></span></div>
@@ -238,6 +246,7 @@ function sendWhatsApp(){
 
 </body>
 </html>
+
 
 
 
