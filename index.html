@@ -238,7 +238,7 @@ document.querySelectorAll('#menuPage img').forEach(img=>observer.observe(img));
 function openFull(img){document.getElementById('fullImg').src=img.src; document.getElementById('fullscreen').style.display='flex';}
 function closeFull(){document.getElementById('fullscreen').style.display='none';}
 
-function sendWhatsApp(){
+  function sendWhatsApp(){
   const name = document.getElementById('resName').value;
   const people = document.getElementById('resPeople').value;
   const date = document.getElementById('resDate').value;
@@ -249,12 +249,12 @@ function sendWhatsApp(){
     return;
   }
 
-  // Format date as: 16 Jan 2026
-  const dateObj = new Date(date);
-  const options = { day: 'numeric', month: 'short', year: 'numeric' };
-  const formattedDate = dateObj.toLocaleDateString('en-US', options);
+  // Manual date formatting: YYYY-MM-DD -> 16 Jan 2026
+  const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  const [year, month, day] = date.split('-');
+  const formattedDate = `${parseInt(day)} ${months[parseInt(month)-1]} ${year}`;
 
-  // Format time as: 07:30 AM
+  // Format time to 12h: HH:MM -> 07:30 PM
   const [hour, minute] = time.split(':');
   const hourNum = parseInt(hour);
   const ampm = hourNum >= 12 ? 'PM' : 'AM';
@@ -266,10 +266,18 @@ function sendWhatsApp(){
 
   // Open WhatsApp
   window.open(`https://wa.me/213781675002?text=${message}`, "_blank");
+}
+
+  // Build WhatsApp message
+  const message = `Hello Paco Coffee ☕%0AReservation:%0AName: ${name}%0APeople: ${people}%0ADate: ${formattedDate}%0ATime: ${formattedTime}`;
+
+  // Open WhatsApp
+  window.open(`https://wa.me/213781675002?text=${message}`, "_blank");
 </script>
 
 </body>
 </html>
+
 
 
 
